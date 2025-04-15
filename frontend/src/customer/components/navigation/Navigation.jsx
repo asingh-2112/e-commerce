@@ -22,7 +22,6 @@
 // } from "@heroicons/react/24/outline";
 // import { navigation } from "./NavigationData";
 
-
 // export default function Navigation() {
 //   const [open, setOpen] = useState(false);
 
@@ -371,8 +370,6 @@
 //     </div>
 //   );
 // }
-
-
 
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
@@ -823,7 +820,7 @@ export default function Navigation() {
                         <MenuItem onClick={handleCloseUserMenu}>
                           Profile
                         </MenuItem>
-                        <MenuItem >Logout</MenuItem>
+                        <MenuItem>Logout</MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -838,10 +835,9 @@ export default function Navigation() {
 
                 {/* Search */}
                 <div className="flex items-center lg:ml-6">
-                
                   <p className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
-                    
+
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
                       aria-hidden="true"
@@ -851,9 +847,7 @@ export default function Navigation() {
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Button
-                    className="group -m-2 flex items-center p-2"
-                  >
+                  <Button className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
