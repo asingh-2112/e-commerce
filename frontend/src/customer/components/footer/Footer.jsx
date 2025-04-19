@@ -1,122 +1,140 @@
-import { Button, Grid, Link, Typography, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Link,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 
 const Footer = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const footerSections = [
     {
       title: "Company",
-      links: ["About", "Blog", "Press", "Jobs", "Partners"]
+      links: ["About", "Blog", "Press", "Jobs", "Partners"],
     },
     {
       title: "Solutions",
-      links: ["Marketing", "Analytics", "Commerce", "Insights", "Support"]
+      links: ["Marketing", "Analytics", "Commerce", "Insights", "Support"],
     },
     {
       title: "Documentation",
-      links: ["Guide", "API Status"]
+      links: ["Guide", "API Status"],
     },
     {
       title: "Legal",
-      links: ["Claim", "Privacy", "Terms"]
-    }
+      links: ["Claim", "Privacy", "Terms"],
+    },
   ];
 
   return (
     <div>
-    <Grid container direction="column" sx={{ bgcolor: "black", color: "white", py: 4 }}>
       <Grid
         container
-        justifyContent={isMobile ? "center" : "space-evenly"}
-        spacing={isMobile ? 4 : 2}
-        textAlign="center"
-        // sx={{ 
-        //   px: isMobile ? 2 : 6,
-        //   maxWidth: '1200px',
-        //   margin: '0 auto'
-        // }}
+        direction="column"
+        sx={{ bgcolor: "black", color: "white", py: 4 }}
       >
-        {footerSections.map((section, index) => (
-          <Grid 
-            key={`section-${index}`} 
-            item 
-            xs={12} 
-            sm={5.9}  // Slightly less than 6 to account for spacing
-            md={2.9}  // Slightly less than 3 to account for spacing
-            sx={{ 
-              textAlign: isMobile ? "center" : "left",
-              mb: isMobile ? 3 : 0
-            }}
-          >
-            <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
-              {section.title}
-            </Typography>
-            <Grid container direction="column">
-              {section.links.map((link, linkIndex) => (
-                <Button
-                  key={`link-${index}-${linkIndex}`}
-                  sx={{
-                    color: "white",
-                    justifyContent: isMobile ? "center" : "flex-start",
-                    textTransform: "none",
-                    fontSize: "1rem",
-                    mb: 0.5,
-                    px: 0,
-                    "&:hover": {
-                      color: theme.palette.primary.main
-                    }
-                  }}
-                >
-                  {link}
-                </Button>
-              ))}
+        <Grid
+          container
+          justifyContent={isMobile ? "center" : "space-evenly"}
+          spacing={isMobile ? 4 : 2}
+          textAlign="center"
+          // sx={{
+          //   px: isMobile ? 2 : 6,
+          //   maxWidth: '1200px',
+          //   margin: '0 auto'
+          // }}
+        >
+          {footerSections.map((section, index) => (
+            <Grid
+              key={`section-${index}`}
+              item
+              xs={12}
+              sm={5.9} // Slightly less than 6 to account for spacing
+              md={2.9} // Slightly less than 3 to account for spacing
+              sx={{
+                textAlign: isMobile ? "center" : "left",
+                mb: isMobile ? 3 : 0,
+              }}
+            >
+              <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
+                {section.title}
+              </Typography>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Grid container direction="column" alignItems="center">
+                  {section.links.map((link, linkIndex) => (
+                    <Grid item key={`link-${index}-${linkIndex}`}>
+                      <Button
+                        sx={{
+                          color: "white",
+                          justifyContent: "center",
+                          textTransform: "none",
+                          fontSize: "1rem",
+                          mb: 0.5,
+                          px: 0,
+                          "&:hover": {
+                            color: theme.palette.primary.main,
+                          },
+                        }}
+                      >
+                        {link}
+                      </Button>
+                    </Grid>
+                  ))}
+                </Grid>
+              </div>
             </Grid>
-          </Grid>
-        ))}
-      </Grid>
+          ))}
+        </Grid>
 
-      <Grid item xs={12} sx={{ pt: 6, px: 2 }}>
-        <Typography variant="body2" component="p" align="center" sx={{ mb: 1 }}>
-          &copy; {new Date().getFullYear()} My Company. All rights reserved.
-        </Typography>
-        <Typography variant="body2" component="p" align="center" sx={{ mb: 1 }}>
-          Made with love by Me.
-        </Typography>
-        <Typography variant="body2" component="p" align="center">
-          Icons made by{" "}
-          <Link
-            href="https://www.freepik.com"
-            color="inherit"
-            underline="always"
-            sx={{ '&:hover': { color: 'primary.main' } }}
+        <Grid item xs={12} sx={{ pt: 6, px: 2 }}>
+          <Typography
+            variant="body2"
+            component="p"
+            align="center"
+            sx={{ mb: 1 }}
           >
-            Freepik
-          </Link>{" "}
-          from{" "}
-          <Link
-            href="https://www.flaticon.com/"
-            color="inherit"
-            underline="always"
-            sx={{ '&:hover': { color: 'primary.main' } }}
+            &copy; {new Date().getFullYear()} My Company. All rights reserved.
+          </Typography>
+          <Typography
+            variant="body2"
+            component="p"
+            align="center"
+            sx={{ mb: 1 }}
           >
-            www.flaticon.com
-          </Link>
-        </Typography>
+            Made with love by Me.
+          </Typography>
+          <Typography variant="body2" component="p" align="center">
+            Icons made by{" "}
+            <Link
+              href="https://www.freepik.com"
+              color="inherit"
+              underline="always"
+              sx={{ "&:hover": { color: "primary.main" } }}
+            >
+              Freepik
+            </Link>{" "}
+            from{" "}
+            <Link
+              href="https://www.flaticon.com/"
+              color="inherit"
+              underline="always"
+              sx={{ "&:hover": { color: "primary.main" } }}
+            >
+              www.flaticon.com
+            </Link>
+          </Typography>
+        </Grid>
       </Grid>
-    </Grid>
     </div>
   );
 };
 
 export default Footer;
-
-
-
-
-
-
 
 // import React from 'react';
 // import {
@@ -210,7 +228,7 @@ export default Footer;
 //             </a>
 //           ))}
 //         </MDBContainer>
-        
+
 //         <div className='mt-3'>
 //           &copy; {new Date().getFullYear()} Copyright:{' '}
 //           <a className='text-white' href='/'>
