@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   return (
-    <div>
+    <div className="mt-10">
       <Grid
         container
         direction="column"
