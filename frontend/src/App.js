@@ -7,6 +7,7 @@ import Product from "./customer/components/product/product/Product";
 import ProductDeatils from "./customer/components/productDetails/ProductDetails";
 import RatingSystem from "./customer/components/temporary/RatingSyste,";
 import Cart from "./customer/components/cart/Cart";
+import Checkout from "./customer/components/checkout/Checkout";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         {/* <Product /> */}
         {/* <ProductDeatils/> */}
         {/* <RatingSystem/> */}
-        <Cart/>
+        {/* <Cart/> */}
+        <Checkout/>
       </div>
       <Footer />
     </div>
