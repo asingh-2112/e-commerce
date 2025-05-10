@@ -372,7 +372,7 @@
 // }
 
 import { Fragment, useEffect, useState } from "react";
-import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Tab, TabGroup, TabList, TabPanel, TabPanels, Transition, TransitionChild } from "@headlessui/react";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -387,6 +387,7 @@ import { Avatar, Button, Link, Menu, MenuItem } from "@mui/material";
 // import { useDispatch, useSelector } from "react-redux";
 import { deepPurple } from "@mui/material/colors";
 import { navigation } from "./NavigationData";
+import { useNavigate } from "react-router-dom";
 // import { getUser, logout } from "../../../Redux/Auth/Action";
 // import { getCart } from "../../../Redux/Customers/Cart/Action";
 // import TextField from "@mui/material/TextField";
@@ -397,6 +398,7 @@ function classNames(...classes) {
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const navigate=useNavigate();
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const { auth, cart } = useSelector((store) => store);
@@ -428,7 +430,7 @@ export default function Navigation() {
   };
 
   const handleCategoryClick = (category, section, item, close) => {
-    // navigate(`/${category.id}/${section.id}/${item.id}`);
+    navigate(`/${category.id}/${section.id}/${item.id}`);
     close();
   };
 
@@ -455,9 +457,9 @@ export default function Navigation() {
   return (
     <div className="bg-white pb-10">
       {/* Mobile menu */}
-      <Transition.Root show={open} as={Fragment}>
+      <Transition show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -467,10 +469,10 @@ export default function Navigation() {
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="fixed inset-0 z-40 flex">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
               enterFrom="-translate-x-full"
@@ -479,7 +481,7 @@ export default function Navigation() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <DialogPanel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
@@ -492,9 +494,9 @@ export default function Navigation() {
                 </div>
 
                 {/* Links */}
-                <Tab.Group as="div" className="mt-2">
+                <TabGroup as="div" className="mt-2">
                   <div className="border-b border-gray-200">
-                    <Tab.List className="-mb-px flex space-x-8 px-4">
+                    <TabList className="-mb-px flex space-x-8 px-4">
                       {navigation.categories.map((category) => (
                         <Tab
                           key={category.name}
@@ -510,11 +512,11 @@ export default function Navigation() {
                           {category.name}
                         </Tab>
                       ))}
-                    </Tab.List>
+                    </TabList>
                   </div>
-                  <Tab.Panels as={Fragment}>
+                  <TabPanels as={Fragment}>
                     {navigation.categories.map((category) => (
-                      <Tab.Panel
+                      <TabPanel
                         key={category.name}
                         className="space-y-10 px-4 pb-8 pt-10"
                       >
@@ -571,10 +573,10 @@ export default function Navigation() {
                             </ul>
                           </div>
                         ))}
-                      </Tab.Panel>
+                      </TabPanel>
                     ))}
-                  </Tab.Panels>
-                </Tab.Group>
+                  </TabPanels>
+                </TabGroup>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   {navigation.pages.map((page) => (
@@ -613,11 +615,11 @@ export default function Navigation() {
                     <span className="sr-only">, change currency</span>
                   </a>
                 </div>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
@@ -649,14 +651,14 @@ export default function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
+              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open, close }) => (
                         <>
                           <div className="relative flex">
-                            <Popover.Button
+                            <PopoverButton
                               className={classNames(
                                 open
                                   ? "border-indigo-600 text-indigo-600"
@@ -665,7 +667,7 @@ export default function Navigation() {
                               )}
                             >
                               {category.name}
-                            </Popover.Button>
+                            </PopoverButton>
                           </div>
 
                           <Transition
@@ -677,7 +679,7 @@ export default function Navigation() {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                            <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
@@ -761,7 +763,7 @@ export default function Navigation() {
                                   </div>
                                 </div>
                               </div>
-                            </Popover.Panel>
+                            </PopoverPanel>
                           </Transition>
                         </>
                       )}
@@ -778,7 +780,7 @@ export default function Navigation() {
                     </a>
                   ))}
                 </div>
-              </Popover.Group>
+              </PopoverGroup>
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
@@ -813,8 +815,10 @@ export default function Navigation() {
                         anchorEl={anchorEl}
                         open={openUserMenu}
                         onClose={handleCloseUserMenu}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
+                        slotProps={{
+                          list:{
+                            "aria-labelledby": "basic-button",
+                          },
                         }}
                       >
                         <MenuItem onClick={handleCloseUserMenu}>
