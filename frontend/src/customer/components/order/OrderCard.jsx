@@ -1,10 +1,16 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import AdjustIcon from '@mui/icons-material/Adjust';
+import AdjustIcon from "@mui/icons-material/Adjust";
+import { useNavigate } from "react-router-dom";
 
 const OrderCard = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="p-5 shadow-md shadow-black hover:shadow-2xl border">
+    <div
+      onClick={() => navigate(`/account/order/${5}`)}
+      className="p-5 shadow-md shadow-black hover:shadow-2xl border"
+    >
       <Grid container spacing={2} sx={{ justifyContent: "space-between" }}>
         <Grid item size={{ xs: 6 }}>
           <div className="flex cursor-pointer">
@@ -26,17 +32,24 @@ const OrderCard = () => {
           <p>₹1099</p>
         </Grid>
         <Grid item size={{ xs: 4 }}>
-          {true &&<div> <p>
-            <AdjustIcon sx={{width:"15px", height:"15px"}} className="text-green-600 mr-2 text-sm"/>
-            <span>Delivered On March 03</span>
-          </p> 
-          <p className="text-xs">
-            Your Item Has Been Delivered
-          </p>
-          </div>}
-          {false && <p>
-            <span>Expected Delivery On Mar 03</span>
-          </p>}
+          {true && (
+            <div>
+              {" "}
+              <p>
+                <AdjustIcon
+                  sx={{ width: "15px", height: "15px" }}
+                  className="text-green-600 mr-2 text-sm"
+                />
+                <span>Delivered On March 03</span>
+              </p>
+              <p className="text-xs">Your Item Has Been Delivered</p>
+            </div>
+          )}
+          {false && (
+            <p>
+              <span>Expected Delivery On Mar 03</span>
+            </p>
+          )}
         </Grid>
       </Grid>
     </div>

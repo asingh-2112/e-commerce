@@ -31,6 +31,7 @@ import {
 import ProductReviewCard from "./ProductReviewCard";
 import { mens_kurta } from "../../../data/mens_kurta";
 import HomeSectionCard from "../homeSectionCard/HomeSectionCard";
+import { useNavigate } from "react-router-dom";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -89,6 +90,11 @@ function classNames(...classes) {
 export default function ProductDetails() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    navigate("/cart");
+  };
 
   return (
     <div className="bg-white lg:px-20">
@@ -245,6 +251,7 @@ export default function ProductDetails() {
                 </div>
 
                 <Button
+                  onClick={handleAddToCart}
                   variant="contained"
                   sx={{ px: "2rem", py: "1rem", bgcolor: "#9155fd" }}
                 >
@@ -314,17 +321,14 @@ export default function ProductDetails() {
                   <p className="opacity-60">54890 Ratings</p>
                 </div>
 
-                <Box
-                className="mt-5 space-y-3" sx={{width:"350px"}}
-                  
-                >
+                <Box className="mt-5 space-y-3" sx={{ width: "350px" }}>
                   {/* Excellent */}
                   <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                     {/* <Grid container alignItems="center" gap={2}> */}
                     <Box sx={{ width: "150px", mr: 2 }}>
                       <Typography variant="body2">Excellent</Typography>
                     </Box>
-                    <Box sx={{ width: "100%" }} >
+                    <Box sx={{ width: "100%" }}>
                       <LinearProgress
                         variant="determinate"
                         value={40}
@@ -366,7 +370,7 @@ export default function ProductDetails() {
                         variant="determinate"
                         value={25}
                         sx={{
-                          bgcolor:"#d0d0d0",
+                          bgcolor: "#d0d0d0",
                           height: 7,
                           borderRadius: 4,
                         }}
@@ -438,10 +442,12 @@ export default function ProductDetails() {
 
         {/* Similar Products */}
         <section className="pt-10">
-            <h1 className="py-5 text-xl font-bold">Similar Products</h1>
-            <div className="flex flex-wrap space-y-5">
-                  {mens_kurta.map((item)=><HomeSectionCard product={item}/>)}
-            </div>
+          <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+          <div className="flex flex-wrap space-y-5">
+            {mens_kurta.map((item) => (
+              <HomeSectionCard product={item} />
+            ))}
+          </div>
         </section>
       </div>
     </div>

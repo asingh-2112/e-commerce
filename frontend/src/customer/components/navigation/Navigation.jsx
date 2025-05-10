@@ -372,7 +372,21 @@
 // }
 
 import { Fragment, useEffect, useState } from "react";
-import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Tab, TabGroup, TabList, TabPanel, TabPanels, Transition, TransitionChild } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -398,7 +412,7 @@ function classNames(...classes) {
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   // const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const { auth, cart } = useSelector((store) => store);
@@ -816,13 +830,16 @@ export default function Navigation() {
                         open={openUserMenu}
                         onClose={handleCloseUserMenu}
                         slotProps={{
-                          list:{
+                          list: {
                             "aria-labelledby": "basic-button",
                           },
                         }}
                       >
                         <MenuItem onClick={handleCloseUserMenu}>
                           Profile
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate("/account/order")}>
+                          My Orders
                         </MenuItem>
                         <MenuItem>Logout</MenuItem>
                       </Menu>
