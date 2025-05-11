@@ -5,7 +5,7 @@ const ProductReviewCard = () => {
   return (
     <div>
       <Grid container spacing={2} gap={3}>
-        <Grid item xs={1}>
+        <Grid item size={{xs:1}}>
           <Box>
             <Avatar
               className="text-white"
@@ -15,7 +15,7 @@ const ProductReviewCard = () => {
             </Avatar>
           </Box>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item size={{xs:9}}>
           <div className="space-y-2">
             <div>
               <p className="font-semibold text-lg">Raam</p>

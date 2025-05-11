@@ -52,10 +52,10 @@ const Footer = () => {
           {footerSections.map((section, index) => (
             <Grid
               key={`section-${index}`}
-              item
-              xs={12}
-              sm={5.9} // Slightly less than 6 to account for spacing
-              md={2.9} // Slightly less than 3 to account for spacing
+              size={{
+              xs:12,
+              sm:5.9, // Slightly less than 6 to account for spacing
+              md:2.9}} // Slightly less than 3 to account for spacing
               sx={{
                 textAlign: isMobile ? "center" : "left",
                 mb: isMobile ? 3 : 0,
@@ -67,7 +67,7 @@ const Footer = () => {
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Grid container direction="column" alignItems="center">
                   {section.links.map((link, linkIndex) => (
-                    <Grid item key={`link-${index}-${linkIndex}`}>
+                    <Grid key={`link-${index}-${linkIndex}`}>
                       <Button
                         sx={{
                           color: "white",
@@ -91,7 +91,7 @@ const Footer = () => {
           ))}
         </Grid>
 
-        <Grid item xs={12} sx={{ pt: 6, px: 2 }}>
+        <Grid size={{xs:12}} sx={{ pt: 6, px: 2 }}>
           <Typography
             variant="body2"
             component="p"
